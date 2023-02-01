@@ -12,24 +12,9 @@ import('redgin')
     injectStyles.push(style2)
 
     // load compon
-    import('./app')
+    import('./src/layout/layout')
 
-    // configure router
-    customElements.whenDefined('router-slot').then(async () => {
-
-      const routerSlot = document.querySelector('app-root').shadowRoot.querySelector('router-slot')
-
-      routerSlot.add([
-        {
-          path: 'product',          
-          component: () => import('./productList'),
-        },       
-        {
-          path: '',          
-          component: () => import('./productList'),
-        },
-      ])
-    })    
+      
   
   })
   .catch((err) => console.log(err))
