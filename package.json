@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "inline-html": "^1.2.0",
     "redgin": "^0.1.11",
     "router-slot": "^1.5.5"
   }
