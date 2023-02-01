@@ -1,4 +1,4 @@
-import { RedGin, propReflect } from 'redgin'
+import { RedGin, propReflect, event, emit } from 'redgin'
 import { Product } from './products'
 
 class ProductAlerts extends RedGin {
@@ -8,8 +8,8 @@ class ProductAlerts extends RedGin {
   render() {
     return `
       ${ this.product && this.product.price > 700 ? ` 
-        <p>
-          <button type="button">Notify Me</button>
+        <p>          
+          <button ${ event('click', () => emit.call(this, 'notifyMe') ) } >Notify Me</button>
         </p>      
       ` : `` }
 
