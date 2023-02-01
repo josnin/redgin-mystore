@@ -10,7 +10,7 @@ export default class AppProductList extends RedGin {
   }
 
   onNotify() {
-    window.alert('You will be notified when the product goes on sale');
+    window.alert(`You will be notified when the product goes on sale`);
   }
 
   render() {
@@ -27,11 +27,12 @@ export default class AppProductList extends RedGin {
               title="${e.name}"
             >${e.name}</a>
           </h3>
+
           ${ e.description ? `<p>Description: ${e.description}</p>` : ``  }   
+
           <button  
             ${event('click', () => this.share() )} 
-            > Share
-          </button>
+          >Share</button>
        
           <product-alerts 
             product='${ JSON.stringify(e) }'
