@@ -28,8 +28,8 @@ export default class AppProductList extends RedGin {
             ${event('click', () => this.share() )} 
             > Share
           </button>
-
-          <products-alert product="${ e }"></products-alert>`
+       
+          <product-alerts product='${ JSON.stringify(e) }'></product-alerts>`
           
         ).join('') }         
 

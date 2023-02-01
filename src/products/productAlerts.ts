@@ -3,6 +3,8 @@ import { Product } from './products'
 
 class ProductAlerts extends RedGin {
   product = propReflect<Product>(null)
+
+  static observedAttributes = ['product']
   render() {
     return `
       ${ this.product && this.product.price > 700 ? ` 
