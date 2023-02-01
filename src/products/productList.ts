@@ -1,5 +1,6 @@
 import { RedGin, event } from 'redgin';
 import { Product, products } from './products';
+import './productAlerts'
 
 export default class AppProductList extends RedGin {
   products: Product[] = products;
@@ -26,7 +27,9 @@ export default class AppProductList extends RedGin {
           <button  
             ${event('click', () => this.share() )} 
             > Share
-          </button>` 
+          </button>
+       
+          <product-alerts product='${ JSON.stringify(e) }'></product-alerts>`
           
         ).join('') }         
 
