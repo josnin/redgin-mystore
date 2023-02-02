@@ -14,7 +14,7 @@ export default class AppProductList extends RedGin {
   }
 
   render() {
-    return `
+    return /*html*/`
     
       <h2>Products</h2>
 
