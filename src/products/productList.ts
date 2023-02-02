@@ -20,7 +20,7 @@ export default class AppProductList extends RedGin {
 
       <div>
 
-        ${ this.products.map( (e) => `
+        ${ this.products.map( (e) => html`
 
           <h3>
             <a 
@@ -28,7 +28,7 @@ export default class AppProductList extends RedGin {
             >${e.name}</a>
           </h3>
 
-          ${ e.description ? `<p>Description: ${e.description}</p>` : ``  }   
+          ${ e.description ? html`<p>Description: ${e.description}</p>` : ``  }   
 
           <button  
             ${event('click', () => this.share() )} 
