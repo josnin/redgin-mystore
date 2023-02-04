@@ -5,6 +5,7 @@ import { style2 } from './style2.css';
 import('redgin')
   .then(({ injectStyles }) => {
 
+    // inject global styles
     const styles = [
       `@import url("https://fonts.googleapis.com/icon?family=Material+Icons")`, 
       style2

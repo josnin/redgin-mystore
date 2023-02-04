@@ -1,8 +1,8 @@
-import { RedGin } from 'redgin';
+import { RedGin, html } from 'redgin';
 
 class AppTopBar extends RedGin {
   render() {
-    return `
+    return html`
       <a>
         <h1>My Store</h1>
       </a>  

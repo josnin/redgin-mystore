@@ -1,6 +1,7 @@
 /* Global Styles */
+import { css } from 'redgin';
 
-export const style2 = /* css */`
+export const style2 = css`
 
 /* Global Styles */
 
