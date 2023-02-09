@@ -1,6 +1,7 @@
 /* Global Styles */
+import { css } from 'redgin';
 
-export const style2 = /* css */`
+export const style2 = css`
 
 /* Global Styles */
 
@@ -119,7 +120,7 @@ label {
 
 /* Top Bar */
 
-app-top-bar { 
+top-bar { 
   width: 100%;
   height: 68px;
   /*background-color: #1976d2; */

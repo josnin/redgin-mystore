@@ -1,8 +1,8 @@
-import { RedGin } from 'redgin';
+import { RedGin, html } from 'redgin';
 
-class AppTopBar extends RedGin {
+class TopBar extends RedGin {
   render() {
-    return `
+    return html`
       <a>
         <h1>My Store</h1>
       </a>  
@@ -13,4 +13,10 @@ class AppTopBar extends RedGin {
   }
 }
 
-customElements.define('app-top-bar', AppTopBar);
+customElements.define('top-bar', TopBar);
+
+declare global {
+	interface HTMLElementTagNameMap {
+		"top-bar": TopBar;
+	}
+}

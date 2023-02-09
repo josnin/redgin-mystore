@@ -1,11 +1,11 @@
-import { RedGin } from 'redgin';
+import { RedGin, html } from 'redgin';
 import 'router-slot';
 import('./topBar');
 
 class AppRoot extends RedGin {
   render() {
-    return ` 
-      <app-top-bar></app-top-bar>
+    return html` 
+      <top-bar></top-bar>
 
       <div class="container">
          <router-slot></router-slot>
@@ -25,7 +25,7 @@ customElements.define('app-root', AppRoot);
      
     {
       path: '',          
-      component: () => import('../products/productList'),
+      component: () => import('../products/productList'),   
     },
   ])
 }) 
