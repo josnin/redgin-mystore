@@ -5,7 +5,7 @@ import('./topBar');
 class AppRoot extends RedGin {
   render() {
     return html` 
-      <app-top-bar></app-top-bar>
+      <top-bar></top-bar>
 
       <div class="container">
          <router-slot></router-slot>

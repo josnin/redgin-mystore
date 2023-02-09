@@ -120,7 +120,7 @@ label {
 
 /* Top Bar */
 
-app-top-bar { 
+top-bar { 
   width: 100%;
   height: 68px;
   /*background-color: #1976d2; */

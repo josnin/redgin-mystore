@@ -8,16 +8,22 @@ class ProductAlerts extends RedGin {
   
   render() {
     return `
-      ${ (this.product && this.product.price > 700) ?? html` 
+      ${ (this.product && this.product.price > 700) ? html` 
         <p>          
           <button 
             ${ event('click', () => emit.call(this, 'notifyMe') ) } 
           >Notify Me</button>
         </p>      
-      ` }
+      ` : `` }
 
       `
   }
 }
 
 customElements.define('product-alerts', ProductAlerts)
+
+declare global {
+	interface HTMLElementTagNameMap {
+		"product-alerts": ProductAlerts;
+	}
+}

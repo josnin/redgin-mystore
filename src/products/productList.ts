@@ -2,7 +2,7 @@ import { RedGin, event, html } from 'redgin';
 import { Product, products } from './products';
 import './productAlerts'
 
-export default class AppProductList extends RedGin {
+export default class ProductList extends RedGin {
   products: Product[] = products;
 
   share() {
@@ -28,7 +28,7 @@ export default class AppProductList extends RedGin {
             >${e.name}</a>
           </h3>
 
-          ${ e.description ?? html`<p>Description: ${e.description}</p>`  }   
+          ${ e.description ? html`<p>Description: ${e.description}</p>` : `` }   
 
           <button  
             ${event('click', () => this.share() )} 
@@ -46,4 +46,10 @@ export default class AppProductList extends RedGin {
   }
 }
 
-customElements.define('app-product-list', AppProductList);
+customElements.define('product-list', ProductList);
+
+declare global {
+	interface HTMLElementTagNameMap {
+		"product-list": ProductList;
+	}
+}
