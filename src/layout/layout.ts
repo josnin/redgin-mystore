@@ -1,14 +1,32 @@
 import { RedGin, html } from 'redgin';
+import JongRouter from 'jong-router';
 import 'router-slot';
 import('./topBar');
 
 class AppRoot extends RedGin {
+
+  onInit() {
+    const router = new JongRouter([
+
+      { pattern: '/', component: import('../products/productList') }  
+   
+    
+      // Add more routes as needed
+    
+    ], this.shadowRoot.getElementById('outlet'), this.shadowRoot );   
+    
+    
+    router.init();
+    
+  }
+
   render() {
     return html` 
       <top-bar></top-bar>
 
       <div class="container">
-         <router-slot></router-slot>
+        <div id="outlet"></div>
+      
       </div>
     `;
   }
@@ -16,16 +34,3 @@ class AppRoot extends RedGin {
 
 customElements.define('app-root', AppRoot);
 
- // configure router
- customElements.whenDefined('router-slot').then(async () => {
-
-  const routerSlot = document.querySelector('app-root').shadowRoot.querySelector('router-slot')
-
-  routerSlot.add([
-     
-    {
-      path: '',          
-      component: () => import('../products/productList'),   
-    },
-  ])
-}) 

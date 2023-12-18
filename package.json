@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "redgin": "^0.1.17",
-    "router-slot": "^1.5.5"
+    "jong-router": "^0.1.12",
+    "redgin": "^0.1.17"
   }
 }
