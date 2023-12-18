@@ -1,5 +1,6 @@
 import { RedGin, html } from 'redgin';
 import JongRouter from 'jong-router';
+
 import('./topBar');
 
 class AppRoot extends RedGin {
