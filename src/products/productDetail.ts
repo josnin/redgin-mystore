@@ -1,4 +1,6 @@
-import { RedGin, propReflect, event, emit, html } from 'redgin';
+
+import { RedGin, html } from 'redgin';
+
 import { Product, products } from './products';
 
 export default class ProductDetail extends RedGin {
@@ -10,10 +12,10 @@ export default class ProductDetail extends RedGin {
   
     console.log(this.products);
   
-    return `
+    return html`
       <h2>Product Details</h2>
       <div>
-        ${product ? `
+        ${product ? html`
           <h3>${product.name}</h3>
           <h4>${product.price}</h4>
           <p>${product.description}</p>

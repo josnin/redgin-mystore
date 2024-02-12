@@ -3,9 +3,7 @@ import { Product, products } from '../products/products';
 import { FormBuilder } from 'pao-form';
 
 export default class CartCheckout extends RedGin {
-  items: Product[] = products;
-  //items: any = []
-  fb: any;
+  items: Product[] = products;  
   checkoutFrmGroup: any;
 
   onSubmit() {
@@ -14,31 +12,33 @@ export default class CartCheckout extends RedGin {
       'Your order has been submitted',
       this.checkoutFrmGroup.getValue()
     );
-    this.checkoutFrmGroup.clearValue();
+    //this.checkoutFrmGroup.clearValue();
   }
 
   onInit() {
-    this.fb = new FormBuilder(this.shadowRoot);
+    const fb = new FormBuilder(this.shadowRoot);
     const Validators = {
       required: {
-        validator: (value) => !!value,
+        validator: (value: any) => !!value,
         errorMessage: 'This field is required!',
       },
     };
 
     // Create controls with validators
-    const nameControl = this.fb.control('', [Validators.required]);
-    const addressControl = this.fb.control('', [Validators.required]);
+    const nameControl = fb.control('', [Validators.required]);
+    const addressControl = fb.control('', [Validators.required]);
 
     // Create a form group
-    this.checkoutFrmGroup = this.fb.group({
+    this.checkoutFrmGroup = fb.group({
       name: nameControl,
       address: addressControl,
     });
 
     this.checkoutFrmGroup.validateAll();
 
-    console.log(this.checkoutFrmGroup, 'AAAAA');
+
+    //console.log(this.checkoutFrmGroup.getValue());
+
   }
 
   render() {
@@ -81,7 +81,8 @@ export default class CartCheckout extends RedGin {
         
         
           <br/>
-          <button ${event('click', () => this.onSubmit())}>Purchase</button>
+
+          <button router-link ${event('click', () => this.onSubmit())}>Purchase</button>
 
         
         </form>
