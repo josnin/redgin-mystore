@@ -6,7 +6,7 @@ class TopBar extends RedGin {
       <a>
         <h1>My Store</h1>
       </a>  
-      <a class="button fancy-button">
+      <a class="button fancy-button" router-link href="/cart">
         <i class="material-icons">shopping_cart</i>Checkout
       </a>  
   `;
