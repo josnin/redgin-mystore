@@ -2,7 +2,7 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/typescript-ezsw6j)
 
-This project is a basic shopping cart demo that showcases the integration of various technologies to create a small ecommerce application. It built using RedGin, jong-router for routing, and Pao-form for form building.
+This project is a basic shopping cart demo that showcases the integration of various technologies to create a small ecommerce application. It built using [RedGin](https://github.com/josnin/redgin), [jong-router](https://github.com/josnin/jong-router) for routing, and [pao-form](https://github.com/josnin/pao-form) for form building.
 
 ## Features
 - Browse through product listings
