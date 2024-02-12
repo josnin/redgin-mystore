@@ -1,22 +1,22 @@
-import { RedGin, event, html } from 'redgin';
+import { RedGin, event, html, propReflect, watch } from 'redgin';
 import { Product, products } from '../products/products';
 import { FormBuilder } from 'pao-form';
 
 export default class CartCheckout extends RedGin {
-  items: Product[] = products;  
-  checkoutFrmGroup: any;
+  itemsInCart: Product[] = products;
+  isValid = propReflect<boolean>(false);
+  checkoutFormGroup: any;
+
+  static observedAttributes = ['is-valid'];
 
   onSubmit() {
-    this.items = [];
-    console.warn(
-      'Your order has been submitted',
-      this.checkoutFrmGroup.getValue()
-    );
-    //this.checkoutFrmGroup.clearValue();
+    this.itemsInCart = [];
+    console.warn('Your order has been submitted', this.checkoutFormGroup.getValue());
+    //this.checkoutFormGroup.clearValue();
   }
 
   onInit() {
-    const fb = new FormBuilder(this.shadowRoot);
+    const formBuilder = new FormBuilder(this.shadowRoot);
     const Validators = {
       required: {
         validator: (value: any) => !!value,
@@ -25,68 +25,58 @@ export default class CartCheckout extends RedGin {
     };
 
     // Create controls with validators
-    const nameControl = fb.control('', [Validators.required]);
-    const addressControl = fb.control('', [Validators.required]);
+    const nameControl = formBuilder.control('', [Validators.required]);
+    const addressControl = formBuilder.control('', [Validators.required]);
 
     // Create a form group
-    this.checkoutFrmGroup = fb.group({
+    this.checkoutFormGroup = formBuilder.group({
       name: nameControl,
       address: addressControl,
     });
 
-    this.checkoutFrmGroup.validateAll();
+    // Subscribe to changes in the entire form group
+    this.checkoutFormGroup.subscribe((value: string) => {
+      console.log('Form value changed:', value);
+      this.checkoutFormGroup.validateAll();
+      this.isValid = this.checkoutFormGroup.valid;
+    });
 
-
-    //console.log(this.checkoutFrmGroup.getValue());
-
+    //console.log(this.checkoutFormGroup.getValue());
   }
 
   render() {
     return html`
-        <h3>Cart</h3>
-
-        <p>
-          <a routerLink="/shipping">Shipping Prices</a>
-        </p>
-        
-    
-          ${this.items.map(
-            (e) => html`
+      <h3>Cart</h3>
+      <p><a routerLink="/shipping">Shipping Prices</a></p>
+      ${this.itemsInCart.map(
+        (item) => html`
           <div class="cart-item">
-            <span>${e.name} </span>
-            <span>${e.price}</span>       
-          </div>       
-          `
-          )}
-    
+            <span>${item.name} </span>
+            <span>${item.price}</span>
+          </div>
+        `
+      )}
+      </div>
+      <form>
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text">
+          <div id="nameError"></div>
         </div>
-        
-        <form>
-        
-          <div>
-            <label for="name">
-              Name
-            </label>
-            <input id="name" type="text">
-            <div id="nameError"></div>
-          </div>
-        
-          <div>
-            <label for="address">
-              Address
-            </label>
-            <input id="address" type="text">
-            <div id="addressError"></div>
-          </div>
-        
-        
-          <br/>
-
-          <button router-link ${event('click', () => this.onSubmit())}>Purchase</button>
-
-        
-        </form>
-     
+        <div>
+          <label for="address">Address</label>
+          <input id="address" type="text">
+          <div id="addressError"></div>
+        </div>
+        <br/>
+        ${watch(['isValid'], () => html`
+          <button 
+            router-link 
+            ${event('click', () => this.onSubmit())}
+            ${!this.isValid ? 'disabled' : '' }
+          >Purchase</button>
+        `)}
+      </form>
     `;
   }
 }
