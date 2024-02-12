@@ -36,7 +36,9 @@ export default class CartCheckout extends RedGin {
 
     this.checkoutFrmGroup.validateAll();
 
+
     //console.log(this.checkoutFrmGroup.getValue());
+
   }
 
   render() {
@@ -79,6 +81,7 @@ export default class CartCheckout extends RedGin {
         
         
           <br/>
+
           <button router-link ${event('click', () => this.onSubmit())}>Purchase</button>
 
         

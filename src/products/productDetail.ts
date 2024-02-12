@@ -1,4 +1,6 @@
+
 import { RedGin, html } from 'redgin';
+
 import { Product, products } from './products';
 
 export default class ProductDetail extends RedGin {
