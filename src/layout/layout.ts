@@ -8,7 +8,9 @@ class AppRoot extends RedGin {
   onInit() {
     const router = new JongRouter([
 
-      { pattern: '/', component: import('../products/productList') }  
+      { pattern: '/', component: import('../products/productList') },
+      { pattern: '/cart', component: import('../cart/checkoutForm') },
+      { pattern: '/products/:productId', component: import('../products/productDetail')  }
    
     
       // Add more routes as needed
