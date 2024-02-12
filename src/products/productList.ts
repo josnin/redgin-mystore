@@ -12,38 +12,38 @@ export default class ProductList extends RedGin {
   onNotify() {
     alert(`You will be notified when the product goes on sale`);
   }
+  
 
   render() {
     return html`
-    
       <h2>Products</h2>
-
       <div>
-
-        ${ this.products.map( (e) => html`
+        ${this.products.map(product => html`
 
           <h3>
-            <a 
-              title="${e.name}"
-            >${e.name}</a>
+            <a title="${product.name}" routerlink href="/products/${product.id}">
+              ${product.name}
+            </a>
           </h3>
 
-          ${ e.description ? html`<p>Description: ${e.description}</p>` : `` }   
+          ${product.description ? html`<p>Description: ${product.description}</p>` : ''}
 
-          <button  
-            ${event('click', () => this.share() )} 
-          >Share</button>
-       
+          <button ${event('click', () => this.share())}>Share</button>
+
           <product-alerts 
-            product='${ JSON.stringify(e) }'
-            ${ event('notifyMe', () => this.onNotify() ) }
+            product='${JSON.stringify(product)}'
+            ${event('notifyMe', () => this.onNotify())}
           ></product-alerts>`
-          
-        ).join('') }         
 
+        ).join('')}
       </div>
     `;
   }
+  
+
+  
+
+ 
 }
 
 customElements.define('product-list', ProductList);
