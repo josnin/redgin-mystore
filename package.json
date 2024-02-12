@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "jong-router": "^0.1.12",
+    "pao-form": "^0.2.15",
     "redgin": "^0.1.17"
   }
 }
