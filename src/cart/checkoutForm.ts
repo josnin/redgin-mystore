@@ -71,7 +71,7 @@ export default class CartCheckout extends RedGin {
         <br/>
         ${watch(['isValid'], () => html`
           <button 
-            router-link 
+            type="button"
             ${event('click', () => this.onSubmit())}
             ${!this.isValid ? 'disabled' : '' }
           >Purchase</button>
